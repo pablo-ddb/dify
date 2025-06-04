@@ -1,0 +1,28 @@
+version: "0.3.0"
+kind: app
+app:
+  name: Google Search Chat
+  mode: chat
+  icon: "🔎"
+  icon_background: "#FFEAD5"
+  description: Chat que usa Google para responder
+model_config:
+  model:
+    provider: openai
+    name: gpt-3.5-turbo
+    completion_params:
+      temperature: 0.7
+      max_tokens: 1024
+      top_p: 1
+      presence_penalty: 0
+      frequency_penalty: 0
+      stop: []
+  agent_mode:
+    enabled: true
+    strategy: react
+    tools:
+      - provider_type: builtin
+        provider_id: google
+        tool_name: search
+        tool_parameters: {}
+
